@@ -13,9 +13,11 @@ import SVProgressHUD
 
 class PostViewController: UIViewController {
     var image: UIImage!
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textField: UITextField!
-//    投稿ボタンをタップした時に呼ばれるメソッド
+    
+    //    投稿ボタンをタップした時に呼ばれるメソッド
     @IBAction func handlePostButton(_ sender: UIButton) {
         // ImageViewから画像を取得する
         let imageData = UIImageJPEGRepresentation(imageView.image!,0.5 )

@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import SVProgressHUD
+
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var mailAddressTextField: UITextField!

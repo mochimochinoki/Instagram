@@ -113,6 +113,8 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         // セル内のボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(handleButton(sender:event:)), for:  UIControlEvents.touchUpInside)
         
+//        //コメントボタン押した時
+//        cell.commentButton.addTarget(self, action:#selector(commentButton(sender:event:)), for:  UIControlEvents.touchUpInside)
         return cell
     }
     
@@ -125,10 +127,45 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         // セルをタップされたら何もせずに選択状態を解除する
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
+//    func commentButton(sender: UIButton, event: UIEvent){
+//        print("DEBUG_PRINT: commentボタンがタップされました。")
+//        let storyboard: UIStoryboard = self.storyboard!
+//        let nextView = storyboard.instantiateViewController(withIdentifier: "comment") as! CommentsViewController
+//        self.present(nextView, animated: true, completion: nil)
+        // タップされたセルのインデックスを求める
+//        let touch = event.allTouches?.first
+//        let point = touch!.location(in: self.tableView)
+//        let indexPath = tableView.indexPathForRow(at: point)
+//
+//        // 配列からタップされたインデックスのデータを取り出す
+//        let postData = postArray[indexPath!.row]
+//        
+//        // Firebaseに保存するデータの準備
+//        if let uid = FIRAuth.auth()?.currentUser?.uid {
+//            if postData.commented {
+//
+//                var index = -1
+//                for likeId in postData.comments {
+//                    if likeId == uid {
+//                        // 削除するためにインデックスを保持しておく
+//                        index = postData.comments.index(of: likeId)!
+//                        break
+//                    }
+//                }
+//                postData.comments.remove(at: index)
+//            } else {
+//                postData.comments.append(uid)
+//            }
+//            
+//            // 増えたlikesをFirebaseに保存する
+//            let postRef = FIRDatabase.database().reference().child(Const.PostPath).child(postData.id!)
+//            let comments = ["comments": postData.comments]
+//            postRef.updateChildValues(comments)
+//        }
+     
+
+//    }
     // セル内のボタンがタップされた時に呼ばれるメソッド
     func handleButton(sender: UIButton, event:UIEvent) {
         print("DEBUG_PRINT: likeボタンがタップされました。")
@@ -165,15 +202,7 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
             
         }
     }
-    
-    func commentButton(_ sender: Any) {
-        let storyboard: UIStoryboard = self.storyboard!
-        let nextView = storyboard.instantiateViewController(withIdentifier:"commentsline")
-        self.present(nextView, animated: true, completion: nil)
-        
-        
-    }
-    
+}
 
     /*
     // MARK: - Navigation
@@ -184,5 +213,3 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         // Pass the selected object to the new view controller.
     }
     */
-
-}

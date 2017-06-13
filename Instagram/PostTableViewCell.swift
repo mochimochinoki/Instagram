@@ -9,15 +9,14 @@
 import UIKit
 
 class PostTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var postImageView: UIImageView!
-
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
-    @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var commentButton: UIButton!
-
+//    @IBOutlet weak var commentLabel: UILabel!
+//    @IBOutlet weak var commentButton: UIButton!
 
     
     override func awakeFromNib() {
@@ -38,7 +37,7 @@ class PostTableViewCell: UITableViewCell {
         let likeNumber = postData.likes.count
         likeLabel.text = "\(likeNumber)"
         
-        self.commentLabel.text = "\(postData.name!) : \(postData.comments)"
+//        self.commentLabel.text = "\(postData.name!) : \(postData.comments)"
         
         let formatter = DateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale!

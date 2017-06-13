@@ -63,6 +63,7 @@ class ImageSelectViewController: UIViewController,UIImagePickerControllerDelegat
         picker.dismiss(animated: true, completion: nil)
     }
     
+    // フォトライブラリやカメラ起動中にキャンセルされたときに呼ばれるメソッド
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         // 閉じる
         picker.dismiss(animated: true, completion: nil)
