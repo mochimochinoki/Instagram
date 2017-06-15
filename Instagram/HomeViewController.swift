@@ -5,7 +5,7 @@
 //  Created by yamamoto yasuhiro on 2017/06/04.
 //  Copyright © 2017年 mochimochinoki. All rights reserved.
 //
-
+//データを受信しタイムラインを表示
 import UIKit
 import Firebase
 import FirebaseAuth
@@ -32,8 +32,8 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         tableView.rowHeight = UITableViewAutomaticDimension
-        // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("DEBUG_PRINT: viewWillAppear")
@@ -100,7 +100,9 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
                 observing = false
             }
         }
+        
     }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return postArray.count
     }
@@ -113,8 +115,8 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         // セル内のボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(handleButton(sender:event:)), for:  UIControlEvents.touchUpInside)
         
-//        //コメントボタン押した時
-//        cell.commentButton.addTarget(self, action:#selector(commentButton(sender:event:)), for:  UIControlEvents.touchUpInside)
+        //コメントボタン押した時
+        cell.commentButton.addTarget(self, action:#selector(commentButton(sender:event:)), for:  UIControlEvents.touchUpInside)
         return cell
     }
     
@@ -128,44 +130,25 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     }
 
-//    func commentButton(sender: UIButton, event: UIEvent){
-//        print("DEBUG_PRINT: commentボタンがタップされました。")
-//        let storyboard: UIStoryboard = self.storyboard!
-//        let nextView = storyboard.instantiateViewController(withIdentifier: "comment") as! CommentsViewController
-//        self.present(nextView, animated: true, completion: nil)
+    func commentButton(sender: UIButton, event: UIEvent){
+        print("DEBUG_PRINT: commentボタンがタップされました。")
+        
         // タップされたセルのインデックスを求める
-//        let touch = event.allTouches?.first
-//        let point = touch!.location(in: self.tableView)
-//        let indexPath = tableView.indexPathForRow(at: point)
-//
-//        // 配列からタップされたインデックスのデータを取り出す
-//        let postData = postArray[indexPath!.row]
-//        
-//        // Firebaseに保存するデータの準備
-//        if let uid = FIRAuth.auth()?.currentUser?.uid {
-//            if postData.commented {
-//
-//                var index = -1
-//                for likeId in postData.comments {
-//                    if likeId == uid {
-//                        // 削除するためにインデックスを保持しておく
-//                        index = postData.comments.index(of: likeId)!
-//                        break
-//                    }
-//                }
-//                postData.comments.remove(at: index)
-//            } else {
-//                postData.comments.append(uid)
-//            }
-//            
-//            // 増えたlikesをFirebaseに保存する
-//            let postRef = FIRDatabase.database().reference().child(Const.PostPath).child(postData.id!)
-//            let comments = ["comments": postData.comments]
-//            postRef.updateChildValues(comments)
-//        }
-     
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
 
-//    }
+        // 配列からタップされたインデックスのデータを取り出す
+        let postData = postArray[indexPath!.row]
+        
+        //コメント入力画面に遷移させる
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "comment") as! CommentsViewController
+        nextView.postData = postData
+        self.present(nextView, animated: true, completion: nil)
+        
+    }
+
     // セル内のボタンがタップされた時に呼ばれるメソッド
     func handleButton(sender: UIButton, event:UIEvent) {
         print("DEBUG_PRINT: likeボタンがタップされました。")
@@ -198,18 +181,10 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
             // 増えたlikesをFirebaseに保存する
             let postRef = FIRDatabase.database().reference().child(Const.PostPath).child(postData.id!)
             let likes = ["likes": postData.likes]
-            postRef.updateChildValues(likes)
-            
+            postRef.updateChildValues(likes)            
         }
     }
+    
 }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+ 

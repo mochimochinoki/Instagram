@@ -358,7 +358,7 @@
                                 </constraints>
                                 <state key="normal" title="コメントする" backgroundImage="btn"/>
                                 <connections>
-                                    <action selector="sendComment:" destination="Zqf-Pt-2tO" eventType="touchUpInside" id="Che-62-IMD"/>
+                                    <action selector="sendComment:" destination="Zqf-Pt-2tO" eventType="touchUpInside" id="QRn-NU-FvY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9h-Sx-gZr">
@@ -368,7 +368,7 @@
                                 </constraints>
                                 <state key="normal" title="キャンセル" backgroundImage="btn"/>
                                 <connections>
-                                    <action selector="cancel:" destination="Zqf-Pt-2tO" eventType="touchUpInside" id="pVg-lC-HCs"/>
+                                    <action selector="cancel:" destination="Zqf-Pt-2tO" eventType="touchUpInside" id="0yo-Jv-Xm9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -383,7 +383,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="commentText" destination="PNn-iN-2xp" id="ECy-r3-vAf"/>
+                        <outlet property="commentText" destination="PNn-iN-2xp" id="y7m-d1-OO6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ymK-P1-mMU" userLabel="First Responder" sceneMemberID="firstResponder"/>

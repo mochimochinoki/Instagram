@@ -92,8 +92,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="captionLabel" destination="jUd-3W-6OH" id="TVM-oS-O8M"/>
-                <outlet property="commentButton" destination="YKK-bh-C3k" id="jzX-I2-dgF"/>
-                <outlet property="commentLabel" destination="D6M-ay-dZN" id="sSk-9G-wdq"/>
+                <outlet property="commentButton" destination="YKK-bh-C3k" id="rqN-QE-3CM"/>
+                <outlet property="commentLabel" destination="D6M-ay-dZN" id="70e-WR-P1l"/>
                 <outlet property="dateLabel" destination="iaT-7h-Lef" id="NcO-KK-OGy"/>
                 <outlet property="likeButton" destination="Vky-dQ-veq" id="a6R-5p-Pde"/>
                 <outlet property="likeLabel" destination="FQ5-tE-t54" id="94v-Sd-ToE"/>
